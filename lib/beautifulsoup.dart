@@ -1,3 +1,5 @@
+import 'dart:collection';
+
 import 'package:html/parser.dart' show parse;
 import 'package:html/dom.dart';
 
@@ -7,14 +9,24 @@ class Beautifulsoup {
   Beautifulsoup(this.html_doc){
     doc = parse(html_doc);
   }
+
+  Element find({String id}) {
+    return doc.querySelector(id);
+  }
+
   Element call(String selector) => doc.querySelector(selector);
 
-  List<String> find_all(String selector){
-    return doc.querySelectorAll(selector).map((e)=>e.outerHtml).toList();
+  List<Element> find_all(String selector){
+    return doc.querySelectorAll(selector);
   }
 
   String get_text(){
     return doc.querySelector("html").text;
   }
   
+  String print(){
+    return doc.querySelector("html").outerHtml;
+  }
+
+  String attr(Element e,String attribute) => e.attributes[attribute];
 }

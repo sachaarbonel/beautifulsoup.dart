@@ -1,5 +1,4 @@
 import 'package:beautifulsoup/beautifulsoup.dart';
-import 'package:html/dom.dart';
 
 main() {
   String document = """
@@ -26,5 +25,5 @@ main() {
   print(soup("p").attributes["class"]); //soup.p['class']
   print(soup("a").outerHtml); //soup.a
   print(soup.get_text()); //soup.get_text()
-  print(soup.find_all("a")); //soup.find_all a
+  print(soup.find_all("a").map((e)=> (e.outerHtml)).toList());
 }

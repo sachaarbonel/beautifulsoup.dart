@@ -9,7 +9,6 @@ A simple usage example:
 
 ```dart
 import 'package:beautifulsoup/beautifulsoup.dart';
-import 'package:html/dom.dart';
 
 main() {
   String document = """
@@ -36,9 +35,73 @@ main() {
   print(soup("p").attributes["class"]); //soup.p['class']
   print(soup("a").outerHtml); //soup.a
   print(soup.get_text()); //soup.get_text()
-  print(soup.find_all("a")); //soup.find_all a
+  print(soup.find_all("a").map((e)=> (e.outerHtml)).toList());
 }
+```
+Modifying text via class name
+```dart
+  String document = """
+   <p id="RipVanWinkle">
+    RipVanWinkle paragraph.
+  </p>
+    """;
+    
+  var soup = Beautifulsoup(document);
+  soup.find(id:"#RipVanWinkle").text = "Wake up, sleepy head!";
+  print(soup.print());
+```
 
+Modify text by tag
+```dart
+  String document = """
+  <a href="http://example.com/">I linked to <i>example.com</i></a>
+  """;
+    
+  var soup = Beautifulsoup(document);
+  soup("a").text ="New link text";
+  print(soup.print());
+```
+
+Find all links in a html document 
+```dart
+String document = """
+    <html>
+    <head>
+      <title>
+      The Dormouse's story
+      </title>
+    </head>
+    <body>
+      <p class="title">
+      <b>
+        The Dormouse's story
+      </b>
+      </p>
+      <p class="story">
+      Once upon a time there were three little sisters; and their names were
+      <a class="sister" href="http://example.com/elsie" id="link1">
+        Elsie
+      </a>
+      ,
+      <a class="sister" href="http://example.com/lacie" id="link2">
+        Lacie
+      </a>
+      and
+      <a class="sister" href="http://example.com/tillie" id="link2">
+        Tillie
+      </a>
+      ; and they lived at the bottom of a well.
+      </p>
+      <p class="story">
+      ...
+      </p>
+    </body>
+    </html>
+    """;
+    
+    var soup = Beautifulsoup(document);
+    var hyperlinks = soup.find_all("a").map((e)=> print(soup.attr(e,"href"))).toList();
+    
 ```
 
 ## Features and bugs

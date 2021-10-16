@@ -9,3 +9,5 @@ environment:
 
 dev_dependencies:
   test: ^1.0.0
+dependencies: 
+  html: ^0.15.0

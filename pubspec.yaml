@@ -2,10 +2,11 @@ name: beautifulsoup
 description: A dart port of the famous python library beautifulsoup
 version: 0.0.1
 homepage: https://github.com/Sach97/beautifulsoup.dart
-author: Sach97 <sacha.arbonel@hotmail.fr>
 
 environment:
-  sdk: '>=2.0.0 <3.0.0'
+  sdk: '>=2.12.0 <3.0.0'
 
 dev_dependencies:
   test: ^1.0.0
+dependencies: 
+  html: ^0.15.0

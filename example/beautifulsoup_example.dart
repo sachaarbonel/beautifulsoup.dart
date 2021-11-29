@@ -14,16 +14,16 @@ main() {
 
   <p class="story">...</p>
   """;
-  
+
   var soup = Beautifulsoup(document);
-  
-  print(soup("title").outerHtml); //soup.title
-  print(soup("title").localName); //soup.title.name
-  print(soup("title").text); //soup.title.string
-  print(soup("title").parent.localName); //soup.title.parent.name
-  print(soup("p").outerHtml); //soup.title.parent.name
-  print(soup("p").attributes["class"]); //soup.p['class']
-  print(soup("a").outerHtml); //soup.a
+
+  print(soup("title")!.outerHtml); //soup.title
+  print(soup("title")!.localName); //soup.title.name
+  print(soup("title")!.text); //soup.title.string
+  print(soup("title")!.parent!.localName); //soup.title.parent.name
+  print(soup("p")!.outerHtml); //soup.title.parent.name
+  print(soup("p")!.attributes["class"]); //soup.p['class']
+  print(soup("a")!.outerHtml); //soup.a
   print(soup.get_text()); //soup.get_text()
-  print(soup.find_all("a").map((e)=> (e.outerHtml)).toList());
+  print(soup.find_all("a").map((e) => (e.outerHtml)).toList());
 }
